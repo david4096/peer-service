@@ -1,6 +1,8 @@
 Connecting GA4GH Services
 =========================
 
+View the [API Description](https://david4096.github.io/peer-service/)
+
 The GA4GH aims to create an easy to implement network of Genomics data
 services. To achieve this end, the protocol presents some message,
 endpoints, and methods that are dedicated to communicating about a
