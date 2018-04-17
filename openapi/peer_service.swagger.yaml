@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
-  title: ga4gh/peer_service.proto
-  version: version not set
+  title: Peer Service
+  version: 0.1
 schemes:
   - http
   - https
@@ -9,8 +9,9 @@ consumes:
   - application/json
 produces:
   - application/json
+basePath: /ga4gh/peers/v1
 paths:
-  /v0.6.0a10/announce:
+  /announce:
     post:
       summary: |-
         Allows a client to notify a service of a potential peer.
@@ -31,7 +32,7 @@ paths:
             $ref: '#/definitions/ga4ghAnnouncePeerResponse'
       tags:
         - PeerService
-  /v0.6.0a10/info:
+  /info:
     get:
       summary: |-
         Provides peers with a way to identify the protocol version
@@ -48,7 +49,7 @@ paths:
             $ref: '#/definitions/ga4ghGetInfoResponse'
       tags:
         - PeerService
-  /v0.6.0a10/peers/list:
+  /peers/list:
     post:
       summary: |-
         Gets a list of `Peer` messages that are being managed by the
