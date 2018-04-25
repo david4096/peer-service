@@ -1,4 +1,4 @@
-Peer Service
+<img src="diagrams/tessel8.svg" width="100" align="left" /> Peer Service
 ============
 
 View the [API Description](https://david4096.github.io/peer-service/)
