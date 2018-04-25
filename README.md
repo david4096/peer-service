@@ -1,5 +1,5 @@
-Connecting GA4GH Services
-=========================
+Peer Service
+============
 
 View the [API Description](https://david4096.github.io/peer-service/)
 
