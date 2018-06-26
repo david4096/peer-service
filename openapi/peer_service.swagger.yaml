@@ -9,7 +9,7 @@ consumes:
   - application/json
 produces:
   - application/json
-basePath: /ga4gh/peers/v1
+basePath: /peers
 paths:
   /announce:
     post:
@@ -44,7 +44,7 @@ paths:
       operationId: Info
       responses:
         '200':
-          description: ''
+          description: 'Information about the service should include the version.'
           schema:
             $ref: '#/definitions/GetInfoResponse'
       tags:
@@ -88,44 +88,11 @@ definitions:
           was well formed.
       attributes:
         $ref: '#/definitions/Attributes'
-        description: |-
-          Other information regarding an AnnouncePeerRequest can be sent in
-          the attributes field.
     description: This is the response from `POST /peers/announce`.
   Attributes:
     type: object
-    properties:
-      attr:
-        type: object
-        additionalProperties: true
-  GetInfoResponse:
-    type: object
-    properties:
-      protocol_version:
-        type: string
-        description: |-
-          The string of the protocol version offered by the service. For
-          example, "0.6.0a10".
-      attributes:
-        $ref: '#/definitions/Attributes'
-        description: A map of additional information about the service can be included.
+    additionalProperties: true
     description: This is the response from `GET /info`.
-  ListPeersRequest:
-    type: object
-    properties:
-      page_size:
-        type: integer
-        format: int32
-        description: |-
-          Specifies the maximum number of results to return in a single page. If
-          unspecified, a system default will be used.
-      page_token:
-        type: string
-        description: |-
-          The continuation token, which is used to page through large result sets.
-          To get the next page of results, set this parameter to the value of
-          `next_page_token` from the previous response.
-    description: This request maps to the body of `POST /peers/list`.
   ListPeersResponse:
     type: object
     properties:
@@ -154,20 +121,24 @@ definitions:
           This is the base URL where the service can be accessed from. It is
           expected to be fully formed and to include the port number if the
           port in use is not standard (http 80, https 443).
-
-          For example, the peer at 1kgenomes would appear as:
-            http://1kgenomes.ga4gh.org
-
-          Trailing slashes should be ignored when constructing client
-          requests based on this peer, and so shouldn't be included.
-
-          This example shows a peer that has specified both a base path
-          and a port.
-            http://myapp.mycloudservice.com:8080/data/ga4gh
+          
+          Provide the full endpoint of the peer service "https://example.org:8000/peers". 
+          Trailing slashes should be ignored.
       attributes:
         $ref: '#/definitions/Attributes'
-        description: A map of additional information about the service can be included.
     description: |-
       Peers allow clients to represent services to each other so
       ad-hoc networks can be easily constructed.
-
+  GetInfoResponse:
+    type: object
+    properties:
+      protocol_version:
+        type: string
+        description: |-
+          The version of the protocol is a reserved key in the info response and should 
+          be usable by clients to generate requests.
+      attributes:
+        $ref: '#/definitions/Attributes'
+    description: |-
+      Clients can learn general information about the peer service by accessing its 
+      Info response.
