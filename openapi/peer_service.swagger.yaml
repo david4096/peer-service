@@ -24,7 +24,7 @@ paths:
         `POST /peers/announce` must accept a JSON version of
         `AnnouncePeerRequest` as the post body and will return a JSON
         version of `AnnouncePeerResponse`.
-      operationId: AnnouncePeer
+      operationId: peers.AnnouncePeer
       responses:
         '200':
           description: ''
@@ -41,7 +41,7 @@ paths:
       description: |-
         `GET /info` will return a JSON version of `GetInfoResponse`.
         and does not require any parameters.
-      operationId: Info
+      operationId: peers.Info
       responses:
         '200':
           description: 'Information about the service should include the version.'
@@ -49,7 +49,7 @@ paths:
             $ref: '#/definitions/GetInfoResponse'
       tags:
         - PeerService
-  /peers:
+  /list:
     get:
       summary: |-
         Gets a list of `Peer` messages that are being managed by the
@@ -59,7 +59,7 @@ paths:
         `POST /peers/list` must accept a JSON version of
         `ListPeersRequest` as the post body and will return a JSON
         version of `ListPeersResponse`.
-      operationId: ListPeers
+      operationId: peers.ListPeers
       responses:
         '200':
           description: ''
